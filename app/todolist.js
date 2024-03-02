@@ -1,25 +1,28 @@
-document.querySelector('#push').onclick = function(){
-    if(document.querySelector('#newtask input').value.length == 0){
-        alert("Kindly Enter Task Name!!!!")
-    }
+document.addEventListener('DOMContentLoaded', function() {
+    const taskInput = document.getElementById('taskInput');
+    const addTaskBtn = document.getElementById('addTaskBtn');
+    const taskList = document.getElementById('taskList');
 
-    else{
-        document.querySelector('#tasks').innerHTML += `
-            <div class="task">
-                <span id="taskname">
-                    ${document.querySelector('#newtask input').value}
-                </span>
-                <button class="delete">
-                    <i class="far fa-trash-alt"></i>
-                </button>
-            </div>
-        `;
-
-        var current_tasks = document.querySelectorAll(".delete");
-        for(var i=0; i<current_tasks.length; i++){
-            current_tasks[i].onclick = function(){
-                this.parentNode.remove();
-            }
+    addTaskBtn.addEventListener('click', function() {
+        const taskText = taskInput.value.trim();
+        if (taskText !== '') {
+            addTask(taskText);
+            taskInput.value = '';
         }
+    });
+
+    taskList.addEventListener('click', function(e) {
+        if (e.target.classList.contains('delete-btn')) {
+            e.target.parentElement.remove();
+        }
+    });
+
+    function addTask(taskText) {
+        const li = document.createElement('li');
+        li.innerHTML = `
+            <span>${taskText}</span>
+            <button class="delete-btn">Delete</button>
+        `;
+        taskList.appendChild(li);
     }
-}
+});

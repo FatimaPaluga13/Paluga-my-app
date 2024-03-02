@@ -45,48 +45,19 @@
       </div>
     </div>
   </nav>
+  <link rel="stylesheet" href="../css/todolist.css">
+  
+  <a class="btn btn-primary" href="../index.html">Back</a>
+
   <div class="container">
-    <div id="newtask">
-        <input type="text" placeholder="Add Tasks">
-        <button id="push">Add</button>
-    </div>
-    <a class="btn btn-primary" href="../index.html">Back</a>
-    <div id="tasks"></div>
-</div>
-      <script src="todo_list.js"></script>
-      <script>
-          function goBack() {
-              window.location.href = "index.html";
-          }
-      </script>
-        </form>
-        <ul id="task-list">
+      <h1>Todo List</h1>
+      <div class="input-container">
+          <input type="text" id="taskInput" placeholder="Add new task...">
+          <button id="addTaskBtn">Add Task</button>
+      </div>
+      <ul id="taskList"></ul>
+  </div>
 
-        </ul>
-    </div>
-    <script>
-        function addTask() {
-            // Get the input field and value
-            var taskInput = document.getElementById("task");
-            var taskValue = taskInput.value;
-
-            // Create a new list item and check box
-            var li = document.createElement("li");
-            var checkbox = document.createElement("input");
-            checkbox.type = "checkbox";
-            li.appendChild(checkbox);
-
-            // Add the task text to the list item
-            var textNode = document.createTextNode(taskValue);
-            li.appendChild(textNode);
-
-            // Add the list item to the task list
-            var ul = document.getElementById("task-list");
-            ul.appendChild(li);
-
-            // Clear the input field
-            taskInput.value = "";
-        }
-    </script>
+  <script src="../app/todolist.js"></script>
 </body>
 </html>
